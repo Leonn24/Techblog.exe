@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS Valorant_Blog;
+CREATE DATABASE Valorant_Blog;
