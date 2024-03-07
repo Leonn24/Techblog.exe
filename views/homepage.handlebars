@@ -1,11 +1,14 @@
-<section class="bg-dark text-light p-5 text-center">
-    <div class="container">
-    <div class="d-flex">
+<main class="bg-dark text-light p-5 text-center">
+  <div class="card text-center">
+    {{#each posts}}
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="/post/{{id}}" class="text-dark">{{title}}</a>
+        </h2>
+        <div class="card-body text-dark">
+          <p>Created by: {{user.username}} Date: {{format_date createdAt}}</p>
         </div>
-        <div>
-        <h1>Welcome to Valorants Info Hub!</h1>
-        </div>
-        <img class="img-fluid "src="../public/images/JettCoverImg.webp" alt"backgroundJett image">
-        </div>
-    </div>
-</section> 
+      </div>
+    {{/each}}
+  </div>
+</main>
