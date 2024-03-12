@@ -56,26 +56,29 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/dashboard');
+        res.redirect('dashboard');
         return;
     }
-    res.render('/login');
+    res.render('login');
 });
 
 router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
-        res.redirect('/dashboard');
+        res.redirect('dashboard');
         return;
     }
-    res.render('/signup');
+    debugger;
+    res.render('signup');
 });
 
 router.get('/newpost', (req, res) => {
+    console.log("Request received for /newpost route.");
     if (req.session.logged_in) {
-        res.redirect('/newpost');
+        console.log("User is logged in. Rendering newpost template.");
+        res.redirect('newpost');
         return;
     }
-    res.render('/login');
+    res.render('login');
 });
 
 router.get('/editpost/:id', async (req, res) => {

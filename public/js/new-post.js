@@ -5,6 +5,7 @@ const newValorantPostFormHandler = async (event) => {
     const content = document.querySelector('#content-new-valorant-post').value.trim();
   
     if (title && content) {
+      console.log("Sending request to create new post.");
       const response = await fetch('/api/posts', {
         method: 'POST',
         body: JSON.stringify({ title, content }),

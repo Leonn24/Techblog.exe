@@ -1,3 +1,36 @@
-img .background-image {
+body {
+    background-image: url('/images/JettCoverImg.webp');
     background-size: cover;
-}
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px; 
+    padding: 20px;
+  }
+  
+  .navbar {
+    background-color: #15202b !important; 
+  }
+  
+  .navbar-brand {
+    color: #ffffff; 
+  }
+  
+  .navbar-nav .nav-link {
+    color: #ffffff; 
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #7289da;
+  }
+  
+  #valorant-logout {
+    color: #f04747; 
+  }
+  
+  #valorant-logout:hover {
+    color: #f04747; 
+  }
