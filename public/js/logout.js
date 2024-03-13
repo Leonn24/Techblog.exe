@@ -1,3 +1,4 @@
+// Asynchronous function to handle form submission for Valorant logout
 const valorantLogout = async () => {
     const response = await fetch('/api/users/logout', {
       method: 'POST',

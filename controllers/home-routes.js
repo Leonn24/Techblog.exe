@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
+// Route for rendering the homepage with all posts
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -18,6 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Route for rendering a specific post with associated comments and usernames
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -37,6 +39,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
     }
 });
 
+// Route for rendering the dashboard with posts created by the logged-in user
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -54,6 +57,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// Route for rendering the login page
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('dashboard');
@@ -62,6 +66,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// Route for rendering the signup page
 router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('dashboard');
@@ -70,6 +75,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+// Route for rendering the form to create a new post
 router.get('/newpost', (req, res) => {
     if (req.session.logged_in) {
         res.render('newpost', {
@@ -80,6 +86,7 @@ router.get('/newpost', (req, res) => {
     res.render('signup');
 });
 
+// Route for rendering the form to edit a specific post
 router.get('/editpost/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {

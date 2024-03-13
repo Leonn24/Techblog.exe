@@ -1,3 +1,4 @@
+// Function to format a given date
 module.exports = {
     format_date: (date) => {
         const d = new Date(date);

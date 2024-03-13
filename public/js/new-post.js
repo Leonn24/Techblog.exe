@@ -1,3 +1,4 @@
+// Asynchronous function to handle form submission for creating a new Valorant post
 const newValorantPostFormHandler = async (event) => {
     event.preventDefault();
   

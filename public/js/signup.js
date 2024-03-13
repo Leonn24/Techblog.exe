@@ -1,3 +1,4 @@
+// Asynchronous function to handle form submission for Valorant signup
 const valorantSignupFormHandler = async (event) => {
     event.preventDefault();
   

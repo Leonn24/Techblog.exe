@@ -1,3 +1,4 @@
+// Importing required modules and dependencies
 const express = require("express");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -6,10 +7,11 @@ const sequelize = require("./config/connection");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({ helpers: require("./utils/helpers") });
 
+// Initializing Express app
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-
+// Session configuration
 const sess = {
     secret: 'Super secret secret',
     cookie: {},
@@ -20,11 +22,15 @@ const sess = {
     }),
 };
 
+// Setting up session middleware
 app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware for serving static files
 app.use(express.static("public"));
+
+// Configuring Handlebars as the view engine
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
@@ -39,6 +45,7 @@ app.use(
 
 app.use(routes);
 
+// Syncing Sequelize models to the database and starting the server
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
   });

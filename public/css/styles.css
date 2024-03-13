@@ -36,3 +36,17 @@ body {
     color: #f04747; 
   }
   
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    margin-top: 50px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .container {
+    margin-top: 30px;
+  }
+}

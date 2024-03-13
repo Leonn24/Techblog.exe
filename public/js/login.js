@@ -1,3 +1,4 @@
+// Asynchronous function to handle form submission for Valorant login
 const valorantLoginFormHandler = async (event) => {
     event.preventDefault();
     const username = document.querySelector('#username-valorant-login').value.trim();

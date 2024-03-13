@@ -1,7 +1,8 @@
-const router = require("express").Router();
-const { Post, User, Comment } = require("../../models");
-const withAuth = require("../../utils/auth");
+const router = require("express").Router(); 
+const { Post, User, Comment } = require("../../models"); 
+const withAuth = require("../../utils/auth"); 
 
+// GET route for retrieving all posts with associated usernames
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET route for retrieving a specific post by its ID with associated usernames and comments
 router.get('/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -28,6 +30,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// POST route for creating a new post
 router.post('/', withAuth, async (req, res) => {
     try {
         const newPost = await Post.create({
@@ -40,6 +43,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// PUT route for updating an existing post by its ID
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const updatedPost = await Post.update(req.body, {
@@ -55,6 +59,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+// DELETE route for deleting a post by its ID, including associated comments
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         await Comment.destroy({

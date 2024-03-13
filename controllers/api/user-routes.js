@@ -1,17 +1,18 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
-
+// GET route for retrieving all users excluding the password attribute
 router.get('/', (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] },
-    }).then((dbUserData) => res.json(dbUserData))
-        .catch((err) => {
-            console.log(err);
-            res.status(500).json(err);
+    }).then((dbUserData) => res.json(dbUserData)) 
+        .catch((err) => { 
+            console.log(err); 
+            res.status(500).json(err); 
         });
 });
 
+// POST route for user signup
 router.post('/signup', async (req, res) => {
     try {
         const newUser = new User();
@@ -28,23 +29,27 @@ router.post('/signup', async (req, res) => {
         });
     } catch (err) {
         res.status(400).json(err);
-        console.log(err);
+        console.log(err); 
     }
 });
 
+// POST route for user login
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { username: req.body.username } });
+
         if (!userData) {
             res.status(400).json({ message: 'Incorrect username or password, try again!' });
             return;
         }
 
         const validPassword = await userData.checkPassword(req.body.password);
+
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect email or password, give it another go!' });
             return;
         }
+
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
@@ -55,14 +60,15 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// POST route for user logout
 router.post('/logout', (req,res)=>{
     if (req.session.logged_in) {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.status(204).end(); 
         });
     } else {
-        res.status(404).end();
+        res.status(404).end(); 
     }
 });
 
-module.exports = router;
+module.exports = router; 

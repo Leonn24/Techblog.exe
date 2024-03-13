@@ -2,6 +2,7 @@ const post_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
+// Asynchronous function to handle form submission for updating a Valorant post
   const updateValorantPostFormHandler = async (event) => {
     event.preventDefault();
   
@@ -25,6 +26,7 @@ const post_id = window.location.toString().split("/")[
 }
 };
 
+// Asynchronous function to handle form submission for deleting a Valorant post
 const deleteValorantPostFormHandler = async (event) => {
     event.preventDefault();
   

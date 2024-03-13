@@ -1,3 +1,4 @@
+// Asynchronous function to handle form submission for creating a new Valorant comment
 const newValorantCommentFormHandler = async (event) => {
     event.preventDefault();
   
