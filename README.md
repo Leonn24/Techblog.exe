@@ -1,5 +1,5 @@
 # ValorentBlog.exe
-
+Valorant Blog is Heroku deployed application, which serves as a CMS-style platform designed for Valorant players and newcomers alike. It allows those in the Valorant communtiy to publish blog posts based on their thoughts and opinions. 
 
 ## User Story
 
@@ -46,3 +46,15 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
 ```
+
+## Screenshots
+
+![mainpage](/public/images/mainpageHW.png)
+![posts](/public/images/postmainHW.png)
+![signup](/public/images/signupHW.png)
+![newpost](/public/images/newpostHW.png)
+
+## Links
+
+[GitHub](https://github.com/Leonn24/Techblog.exe)
+[Heroku](https://limitless-escarpment-76184-f489419f61a3.herokuapp.com)
