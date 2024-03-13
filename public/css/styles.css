@@ -9,6 +9,7 @@ body {
     background-color: rgba(255, 255, 255, 0.8); 
     border-radius: 10px; 
     padding: 20px;
+    margin-top: 100px;
   }
   
   .navbar {
@@ -34,3 +35,4 @@ body {
   #valorant-logout:hover {
     color: #f04747; 
   }
+  
