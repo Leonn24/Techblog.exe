@@ -27,8 +27,8 @@ router.get('/post/:id', withAuth, async (req, res) => {
             },
             ],
         });
-        const post = postData.get({ plain: true});
-        res.render('post',{
+        const post = postData.get({ plain: true });
+        res.render('post', {
             ...post,
             logged_in: req.session.logged_in,
         });
@@ -40,11 +40,11 @@ router.get('/post/:id', withAuth, async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
-            where: { user_id: req.session.user_id},
-            include: [{model: User, attributes: ['username']}],
+            where: { user_id: req.session.user_id },
+            include: [{ model: User, attributes: ['username'] }],
         });
 
-        const posts = postData.map((post) => post.get({ plain: true}));
+        const posts = postData.map((post) => post.get({ plain: true }));
         res.render('dashboard', {
             posts,
             logged_in: req.session.logged_in,
@@ -67,18 +67,17 @@ router.get('/signup', (req, res) => {
         res.redirect('dashboard');
         return;
     }
-    debugger;
     res.render('signup');
 });
 
 router.get('/newpost', (req, res) => {
-    console.log("Request received for /newpost route.");
     if (req.session.logged_in) {
-        console.log("User is logged in. Rendering newpost template.");
-        res.redirect('newpost');
+        res.render('newpost', {
+            logged_in: req.session.logged_in,
+        });
         return;
     }
-    res.render('login');
+    res.render('signup');
 });
 
 router.get('/editpost/:id', async (req, res) => {
@@ -90,8 +89,8 @@ router.get('/editpost/:id', async (req, res) => {
             },
             ],
         });
-        const post = postData.get({ plain: true});
-        res.render('editpost',{
+        const post = postData.get({ plain: true });
+        res.render('editpost', {
             ...post,
             logged_in: req.session.logged_in,
         });
